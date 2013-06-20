@@ -1,0 +1,29 @@
+@fontSize: 14px;
+
+html {
+	font-family: "Lucida Sans", "Lucida Sans Unicode", Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: @fontSize;
+
+	>body {
+		margin: 0;
+		background: #aaa;
+		background-attachment: fixed;
+
+		>section {
+			position: relative;
+			margin: 20px auto;
+			background: #fff;
+			border: 5px solid #000;
+
+			>#paddle {
+				position: absolute;
+				bottom: 15px;
+				margin: 0;
+				height: 3%;
+				width: 15%;
+				background: linear-gradient(#555, #333);
+				border: 2px solid #000;
+			}
+		}
+	}
+}
