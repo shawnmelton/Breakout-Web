@@ -1,4 +1,4 @@
-define(['components/paddle'], function(Paddle){
+define(['components/paddle', 'components/ball'], function(Paddle, Ball){
 	var Keyboard = function() {};
 	Keyboard.prototype = {
 		/**
@@ -6,10 +6,14 @@ define(['components/paddle'], function(Paddle){
 		 */
 		addDirectionalListeners: function() {
 			$(document).keydown(function(event) {
-				console.log(event.which);
 				switch(event.which) {
-					case 37: Paddle.startMoving(true); break;
-					case 39: Paddle.startMoving(false); break;
+					case 37: Paddle.move(true); break;
+					case 39: Paddle.move(false); break;
+					case 32: // Space bar. 
+						if(!Ball.isMoving()) {
+							Ball.startMoving();
+						}
+						break;
 				}
 			});
 		},
@@ -17,7 +21,6 @@ define(['components/paddle'], function(Paddle){
 		listen: function() {
 			this.addDirectionalListeners();
 		}
-
 	};
 
 	return new Keyboard();
