@@ -3,7 +3,7 @@ define(['jquery', 'components/field'], function($, Field){
 	Paddle.prototype = {
 		el: false,
 		moveTimeout: false,
-		moveStep: 1,
+		moveStep: 3,
 		leftX: 0,
 		height: 0,
 		width: 0,
@@ -96,7 +96,7 @@ define(['jquery', 'components/field'], function($, Field){
 		 * Make it a percentage of the field size.
 		 */
 		setMoveStep: function() {
-			this.moveStep = (Field.getSize().width * .01);
+			this.moveStep = (Field.getSize().width * .03);
 		},
 
 		setWidth: function() {

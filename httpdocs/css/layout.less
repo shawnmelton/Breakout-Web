@@ -21,14 +21,32 @@ html {
 				margin: 0;
 				height: 3%;
 				width: 15%;
-				background: linear-gradient(#555, #333);
-				border: 2px solid #000;
+				background: linear-gradient(#888, #aaa);
+				border: 2px solid #555;
 			}
 
 			>#ball {
 				position: absolute;
 				margin: 0;
-				background: linear-gradient(#333, #000);
+				background: linear-gradient(#777, #000);
+			}
+
+			>#blocks {
+				margin: 25px auto 0;
+				width: 90%;
+				height: 50%;
+				background: #000;
+
+				&:after {
+					content: " ";
+					display: table;
+					clear: left;
+				}
+
+				>p {
+					float: left;
+					margin: 0;
+				}
 			}
 		}
 	}

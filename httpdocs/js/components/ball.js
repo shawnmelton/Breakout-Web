@@ -22,6 +22,10 @@ define(['components/field', 'components/paddle', 'components/collisionDetection'
 			return this.topY + this.height;
 		},
 
+		getCenterX: function() {
+			return this.getLeftX() + (this.width / 2);
+		},
+
 		getHeight: function() {
 			return this.height;
 		},
@@ -69,17 +73,22 @@ define(['components/field', 'components/paddle', 'components/collisionDetection'
 			this.el.css("top", this.topY +"px");
 
 			if(CollisionDetection.paddleCollisionOccurred(this)) {
-				this.redirect(false);
+				var diff = CollisionDetection.getPaddleCollisionPoint(this) - Paddle.getLeftX();
+				var half = (Paddle.getRightX() - Paddle.getLeftX()) / 2;
+				var distanceFromCenter = (half - diff) * -1;
+				this.redirect(distanceFromCenter / half);
 			}
 		},
 
 		/**
 		 * Change the balls direction in which it was moving.
-		 * @param int Percentage away from middle of the paddle.
+		 * Based on where the ball strikes will determine
+		 * | 10 ======= 5 ========= 0 ======== 5 ======= 10 |
+		 * @param float Percentage away from middle of the paddle.
 		 */
 		redirect: function(newPercentage) {
 			if(newPercentage !== false) {
-
+				this.moveStepX = (newPercentage < .2 && newPercentage > -.2) ? 0 : (8 * newPercentage);
 			}
 
 			this.moveStepY *= -1;
