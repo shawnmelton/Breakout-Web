@@ -14,15 +14,16 @@ define(["jquery", "tools/color"], function($, Color) {
 		},
 
 		setColor: function() {
-			this.el.css("background-color", Color.get());
+			var clr = Color.get();
+			this.el.css("background", "linear-gradient("+ clr.light +", "+ clr.dark +")");
 		},
 
 		setSize: function(height, width) {
 			this.height = height;
-			this.el.css("height", this.height +"px");
+			this.el.css("height", (this.height-2) +"px");
 
 			this.width = width;
-			this.el.css("width", this.width +"px");
+			this.el.css("width", (this.width-2) +"px");
 		}
 	};
 

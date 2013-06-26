@@ -4,8 +4,8 @@ define(['components/field', 'components/block'], function(Field, Block){
 		el: false,
 		width: 0,
 		height: 0,
-		rowCount: 5,
-		colCount: 8,
+		rowCount: 7,
+		colCount: 10,
 		items: [],
 
 		build: function() {

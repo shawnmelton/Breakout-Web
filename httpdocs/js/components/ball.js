@@ -77,6 +77,8 @@ define(['components/field', 'components/paddle', 'components/collisionDetection'
 				var half = (Paddle.getRightX() - Paddle.getLeftX()) / 2;
 				var distanceFromCenter = (half - diff) * -1;
 				this.redirect(distanceFromCenter / half);
+			} else if(CollisionDetection.blockCollisionOccurred(this)) {
+
 			}
 		},
 

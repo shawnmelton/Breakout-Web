@@ -1,6 +1,10 @@
 define(['components/paddle'], function(Paddle) {
 	var CollisionDetection = function() {};
 	CollisionDetection.prototype = {
+		blockCollisionOccurred: function() {
+
+		},
+
 		/**
 		 * 
 		 * @return Integer (X coordinate)
