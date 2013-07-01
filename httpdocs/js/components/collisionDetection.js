@@ -1,8 +1,16 @@
-define(['components/paddle'], function(Paddle) {
+define(['components/paddle', 'components/blocks'], function(Paddle, Blocks) {
 	var CollisionDetection = function() {};
 	CollisionDetection.prototype = {
-		blockCollisionOccurred: function() {
+		blockCollisionOccurred: function(Ball) {
+			var blocks = Blocks.getAll();
+			for(var index in blocks) {
+				if(blocks[index].isActivated()) {
+					block.registerHit();
+					return true;
+				}
+			}
 
+			return false;
 		},
 
 		/**

@@ -1,16 +1,37 @@
 define(["jquery", "tools/color"], function($, Color) {
 	var Block = function(row, col, parentEl) {
-		this.row = row;
+		this.activated = true;
 		this.col = col;
-		this.width = 0;
-		this.height = 0;
 		this.el = $("<p></p>");
+		this.height = 0;
+		this.hitTolerance = 2; // How many hits can this block take before it disappears.
+		this.hitCount = this.hitTolerance;  
+		this.row = row;
+		this.width = 0;
 		parentEl.append(this.el);
 	};
 
 	Block.prototype = {
 		init: function() {
 			this.setColor();
+		},
+
+		isActivated: function() {
+			return this.activated;
+		},
+
+		/**
+		 * This block has taken a hit.
+		 */
+		registerHit: function() {
+			if(this.hitCount > 0) {
+				this.hitCount--;
+				this.el.css("opacity", this.hitCount / this.hitTolerance);
+
+				if(this.hitCount == 0) {
+					this.activated = false;
+				}
+			}
 		},
 
 		setColor: function() {

@@ -17,6 +17,10 @@ define(['components/field', 'components/block'], function(Field, Block){
 			}
 		},
 
+		getAll: function() {
+			return this.items;
+		},
+
 		getHeight: function() {
 			return this.height;
 		},
